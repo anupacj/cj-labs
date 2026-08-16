@@ -3,7 +3,7 @@ import { Renderer, Program, Mesh, Geometry, Triangle, Texture, RenderTarget } fr
 import './RippleDistortion.css'
 
 const MAX_WAVES = 100
-const QUALITY_SCALE = { low: 0.4, medium: 0.7, high: 1 }
+const QUALITY_SCALE = { low: 0.35, medium: 0.65, high: 1.0 }
 const START_SCALE = 1.5
 const LIFE_CONSTANT = Math.log(500)
 
@@ -160,15 +160,20 @@ export default function RippleDistortion({
     const mount = mountRef.current
     if (!mount) return
 
+    const isMobile = typeof window !== 'undefined' && (window.innerWidth <= 768 || ('ontouchstart' in window))
+
     const reduceMotion =
       typeof window !== 'undefined' &&
       window.matchMedia &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+    // Mobile DPR Throttling for 100% Smooth Rendering
+    const targetDpr = isMobile ? 1.0 : Math.min(window.devicePixelRatio || 1, 2)
+
     const renderer = new Renderer({
       alpha: false,
       antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2)
+      dpr: targetDpr
     })
     const gl = renderer.gl
     gl.clearColor(0, 0, 0, 1)
@@ -201,7 +206,6 @@ export default function RippleDistortion({
     const scales = new Float32Array(MAX_WAVES * 2)
     const opacities = new Float32Array(MAX_WAVES)
 
-    // Pre-allocate wave objects (official pattern: ring buffer, not push/shift)
     const waves = Array.from({ length: MAX_WAVES }, () => ({
       x: 0,
       y: 0,
@@ -212,7 +216,6 @@ export default function RippleDistortion({
     }))
     let current = 0
 
-    // 6 vertices = 2 triangles (official uses explicit triangles, NOT 4-vertex strip)
     const geometry = new Geometry(gl, {
       position: { size: 2, data: new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]) },
       uv: { size: 2, data: new Float32Array([0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1]) },
@@ -231,11 +234,9 @@ export default function RippleDistortion({
       depthWrite: false,
       cullFace: false
     })
-    // CRITICAL: Additive blending for wave accumulation (official source line 321)
     waveProgram.setBlendFunc(gl.ONE, gl.ONE)
     const waveMesh = new Mesh(gl, { geometry, program: waveProgram, frustumCulled: false })
 
-    // Displacement FBO with quality-scaled resolution
     const displacementTarget = new RenderTarget(gl, {
       width: 2,
       height: 2,
@@ -284,7 +285,8 @@ export default function RippleDistortion({
       renderer.setSize(width, height)
       compositeUniforms.uResolution.value = [width, height]
 
-      const scale = QUALITY_SCALE[quality] || QUALITY_SCALE.high
+      // Mobile FBO Downscaling for smooth performance
+      const scale = isMobile ? 0.35 : (QUALITY_SCALE[quality] || QUALITY_SCALE.high)
       const fieldW = Math.max(2, Math.round(width * scale))
       const fieldH = Math.max(2, Math.round(height * scale))
       displacementTarget.setSize(fieldW, fieldH)
@@ -319,16 +321,26 @@ export default function RippleDistortion({
     let previousX = 0
     let previousY = 0
 
-    const onMove = (event) => {
+    const handlePointerMove = (clientX, clientY) => {
       const cfg = configRef.current
-      if (!cfg.enabled || reduceMotion || cfg.trigger === 'click') return
-      const point = localPoint(event.clientX, event.clientY)
+      if (!cfg.enabled || reduceMotion) return
+      const point = localPoint(clientX, clientY)
       if (!point) return
-      const step = Math.max(1, cfg.spacing)
+      const step = isMobile ? Math.max(25, cfg.spacing * 1.5) : Math.max(1, cfg.spacing)
       if (Math.abs(point[0] - previousX) > step || Math.abs(point[1] - previousY) > step) {
         setNewWave(point[0], point[1], 1)
         previousX = point[0]
         previousY = point[1]
+      }
+    }
+
+    const onMove = (event) => {
+      handlePointerMove(event.clientX, event.clientY)
+    }
+
+    const onTouchMove = (event) => {
+      if (event.touches && event.touches[0]) {
+        handlePointerMove(event.touches[0].clientX, event.touches[0].clientY)
       }
     }
 
@@ -342,6 +354,7 @@ export default function RippleDistortion({
 
     window.addEventListener('pointermove', onMove, { passive: true })
     window.addEventListener('pointerdown', onDown, { passive: true })
+    window.addEventListener('touchmove', onTouchMove, { passive: true })
 
     let raf = 0
     let previousTime = 0
@@ -394,6 +407,7 @@ export default function RippleDistortion({
       ro.disconnect()
       window.removeEventListener('pointermove', onMove)
       window.removeEventListener('pointerdown', onDown)
+      window.removeEventListener('touchmove', onTouchMove)
       uniformsRef.current = null
       if (canvas.parentNode === mount) mount.removeChild(canvas)
       const ext = gl.getExtension('WEBGL_lose_context')

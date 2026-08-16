@@ -64,3 +64,10 @@
   border-color: #000000;
   outline: 2px solid #ffffff;
 }
+
+/* Hide custom cursor on mobile touch screens for 100% smooth touch scrolling */
+@media (pointer: coarse), (hover: none) {
+  .dot, .ring {
+    display: none !important;
+  }
+}

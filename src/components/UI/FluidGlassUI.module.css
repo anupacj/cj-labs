@@ -1,0 +1,155 @@
+/* ═════════════════════════════════════════════════════════
+   3D WebGL Liquid Glass UI Stylesheet
+═════════════════════════════════════════════════════════ */
+
+/* ─── Floating Header Container ─── */
+.navHeader {
+  position: fixed;
+  top: 18px; left: 0; right: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  pointer-events: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
+  cursor: none;
+}
+.logoDot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #6ee7b7;
+  box-shadow: 0 0 14px #6ee7b7;
+}
+.logoText {
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* ─── VisionOS 3D Glass Bar Wrapper ─── */
+.navBarWrapper {
+  position: relative;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.navCanvasContainer {
+  position: absolute;
+  inset: -12px -16px;
+  pointer-events: none;
+}
+
+.navItemsRow {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px;
+}
+
+.navItem {
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: none;
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navItem:hover {
+  color: #ffffff;
+}
+.navItemActive {
+  color: #ffffff !important;
+}
+
+.activePillCanvas {
+  position: absolute;
+  inset: -8px -10px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.navText {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── Circular VisionOS Action Button ─── */
+.circleBtnWrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  cursor: none;
+}
+
+.circleCanvasContainer {
+  position: absolute;
+  inset: -10px;
+  pointer-events: none;
+}
+
+.circleIcon {
+  position: relative;
+  z-index: 2;
+  font-size: 18px;
+  transition: transform 0.25s var(--ease-spring);
+}
+.circleBtnWrap:hover .circleIcon {
+  transform: scale(1.15) rotate(8deg);
+}
+
+/* ─── Reusable 3D WebGL Liquid Glass Button Wrapper ─── */
+.glassBtnWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  user-select: none;
+}
+
+.canvasContainer {
+  position: absolute;
+  inset: -14px -18px;
+  pointer-events: none;
+}
+
+.btnLabel {
+  position: relative;
+  z-index: 2;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}

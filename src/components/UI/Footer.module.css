@@ -1,0 +1,11 @@
+.footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 44px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.logo { font-weight: 900; font-size: 16px; letter-spacing: 0.07em; }
+.links { display: flex; gap: 24px; }
+.link { font-size: 13px; color: var(--muted); transition: color 0.2s; cursor: none; }
+.link:hover { color: var(--ink); }
+.copy { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }

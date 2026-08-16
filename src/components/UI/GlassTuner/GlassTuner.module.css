@@ -1,0 +1,286 @@
+/* ═════════════════════════════════════════════════════════
+   GlassTuner Floating Control Panel Stylesheet
+═════════════════════════════════════════════════════════ */
+
+.tunerWrap {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 360px;
+  border-radius: 20px;
+  background: rgba(10, 12, 18, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.60),
+    0 0 20px rgba(110, 231, 183, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+.closed {
+  width: 190px;
+  height: 44px;
+}
+
+.toggleBtn {
+  width: 100%;
+  height: 44px;
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.toggleBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tunerBody {
+  padding: 16px;
+  max-height: 540px;
+  overflow-y: auto;
+}
+
+.tunerBody::-webkit-scrollbar {
+  width: 4px;
+}
+.tunerBody::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* ─── Tab Navigation Bar ─── */
+.tabBar {
+  display: flex;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 3px;
+  gap: 3px;
+  margin-bottom: 16px;
+}
+
+.tabBtn {
+  flex: 1;
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.tabActive {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.subText {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 14px 0;
+  line-height: 1.4;
+}
+
+.slidersGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sliderBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.sliderVal {
+  color: #6ee7b7;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
+
+.sliderWrap {
+  position: relative;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.sliderFill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: #6ee7b7;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.hintText {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ─── Wallpaper Tab Styles ─── */
+.wallpaperTab {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.presetGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.presetBtn {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+.presetBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.presetActive {
+  background: rgba(110, 231, 183, 0.15) !important;
+  border-color: #6ee7b7 !important;
+  color: #6ee7b7 !important;
+  font-weight: 700;
+}
+
+.uploadBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.uploadLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  color: #6ee7b7;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.uploadLabel:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.urlInputWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.urlLabel {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.urlInput {
+  width: 100%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  outline: none;
+}
+.urlInput:focus {
+  border-color: #6ee7b7;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.copyBtn, .resetBtn {
+  flex: 1;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.copyBtn {
+  background: #6ee7b7;
+  color: #062319;
+}
+.copyBtn:hover {
+  background: #93f5cd;
+  transform: translateY(-1px);
+}
+
+.resetBtn {
+  background: rgba(255, 255, 255, 0.10);
+  color: #ffffff;
+}
+.resetBtn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}

@@ -1,0 +1,109 @@
+.hero {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 24px 100px;
+  overflow: hidden;
+}
+
+.rippleCanvasWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* High Contrast Title Typography */
+.title {
+  font-family: 'Google Sans', 'Google Sans Text', system-ui, -apple-system, sans-serif !important;
+  font-size: clamp(54px, 9.5vw, 122px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.038em;
+  margin-bottom: 34px;
+}
+
+.line1 {
+  display: block;
+  color: #ffffff;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 1);
+}
+
+.line2 {
+  display: block;
+  background: linear-gradient(118deg, #a78bfa 0%, #6ee7b7 42%, #60a5fa 82%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.95));
+}
+
+.line3 {
+  display: block;
+  color: #ffffff;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.95), 0 2px 6px rgba(0, 0, 0, 1);
+  font-style: normal;
+}
+
+/* High-Contrast Frosted Backdrop Subtitle */
+.sub {
+  font-family: 'Google Sans', 'Google Sans Text', system-ui, -apple-system, sans-serif !important;
+  max-width: 540px;
+  margin: 0 auto 54px;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.72;
+  color: #f1f5f9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+  background: rgba(4, 5, 8, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 20px;
+  padding: 18px 28px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+
+.btnText {
+  font-family: 'Google Sans', 'Google Sans Text', system-ui, -apple-system, sans-serif !important;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+.scrollHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.6;
+}
+.scrollLine {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, #ffffff, transparent);
+}
+.scrollText {
+  font-family: 'Google Sans Code', 'Google Sans', monospace !important;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #ffffff;
+}

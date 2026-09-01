@@ -6,6 +6,8 @@ import Nav                from './components/UI/Nav'
 import Footer             from './components/UI/Footer'
 import LiquidGlassFilter  from './components/UI/LiquidGlassFilter'
 import GlassTuner         from './components/UI/GlassTuner/GlassTuner'
+import CapabilitiesModal  from './components/UI/CapabilitiesModal'
+import ProjectModal       from './components/UI/ProjectModal'
 import Hero       from './pages/Hero'
 import Work       from './pages/Work'
 import About      from './pages/About'
@@ -20,6 +22,8 @@ const Sep = () => (
 
 export default function App () {
   const [testMode, setTestMode] = useState(false)
+  const [deckModalOpen, setDeckModalOpen] = useState(false)
+  const [projectModalOpen, setProjectModalOpen] = useState(false)
 
   if (testMode) {
     return (
@@ -77,6 +81,17 @@ export default function App () {
         🧪 Open Pure Ripple Test Page
       </button>
 
+      {/* ── Modals ── */}
+      <CapabilitiesModal
+        isOpen={deckModalOpen}
+        onClose={() => setDeckModalOpen(false)}
+        onOpenProject={() => setProjectModalOpen(true)}
+      />
+      <ProjectModal
+        isOpen={projectModalOpen}
+        onClose={() => setProjectModalOpen(false)}
+      />
+
       {/* ── Fixed layers ── */}
       <Background />
       <LiquidGlassFilter />
@@ -85,11 +100,17 @@ export default function App () {
       <GlassTuner />
 
       {/* ── Navigation ── */}
-      <Nav />
+      <Nav
+        onOpenDeck={() => setDeckModalOpen(true)}
+        onOpenProject={() => setProjectModalOpen(true)}
+      />
 
       {/* ── Page sections ── */}
       <main>
-        <Hero />
+        <Hero
+          onOpenDeck={() => setDeckModalOpen(true)}
+          onOpenProject={() => setProjectModalOpen(true)}
+        />
         <Sep />
         <Suspense fallback={null}>
           <Work />
@@ -108,3 +129,4 @@ export default function App () {
     </GlassProvider>
   )
 }
+

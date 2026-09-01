@@ -10,7 +10,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }
 })
 
-export default function Hero () {
+export default function Hero ({ onOpenDeck, onOpenProject }) {
   const { rippleSettings, wallpaperUrl } = useGlassSettings() || {}
 
   const scrollTo = (id) => {
@@ -37,38 +37,45 @@ export default function Hero () {
         />
       </div>
 
+      {/* Establishing Badge */}
+      <motion.div {...fadeUp(0.15)} style={{ marginBottom: 12 }}>
+        <span className="mono" style={{ fontSize: 12, color: '#6ee7b7', letterSpacing: '0.12em', background: 'rgba(110,231,183,0.1)', padding: '6px 14px', borderRadius: 999, border: '1px solid rgba(110,231,183,0.2)' }}>
+          FULL-CYCLE DIGITAL AGENCY · EST. 2024
+        </span>
+      </motion.div>
+
       {/* Main Title */}
       <motion.h1 className={styles.title} {...fadeUp(0.22)}>
-        <span className={styles.line1}>We craft</span>
+        <span className={styles.line1}>We create</span>
         <span className={styles.line2}>extraordinary</span>
-        <span className={styles.line3}>interfaces.</span>
+        <span className={styles.line3}>digital presences.</span>
       </motion.h1>
 
       <motion.p className={styles.sub} {...fadeUp(0.36)}>
-        CJ Labs is a premium digital design studio. We create interfaces,
-        visual systems, and experiences that feel genuinely different.
+        Vision. Clarity. Flow. Execution. We express brand stories through
+        design craft, functional tech, and strategic thinking.
       </motion.p>
 
-      {/* React Bits GlassSurface Action Buttons (User Settings Synced) */}
+      {/* Primary Agency CTAs */}
       <motion.div className={styles.actions} {...fadeUp(0.48)}>
+        <GlassSurface
+          width="230px"
+          height="52px"
+          borderRadius={999}
+          onClick={onOpenDeck}
+          data-cursor
+        >
+          <span className={styles.btnText}>📥 Get Capabilities Deck</span>
+        </GlassSurface>
+
         <GlassSurface
           width="190px"
           height="52px"
           borderRadius={999}
-          onClick={() => scrollTo('work')}
+          onClick={onOpenProject}
           data-cursor
         >
-          <span className={styles.btnText}>View our work →</span>
-        </GlassSurface>
-
-        <GlassSurface
-          width="170px"
-          height="52px"
-          borderRadius={999}
-          onClick={() => scrollTo('lab')}
-          data-cursor
-        >
-          <span className={styles.btnText}>See the lab ↗</span>
+          <span className={styles.btnText}>💬 Start a Project →</span>
         </GlassSurface>
       </motion.div>
 

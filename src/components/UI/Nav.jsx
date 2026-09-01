@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { label: 'Contact',  link: '#contact' },
 ]
 
-export default function Nav () {
+export default function Nav ({ onOpenDeck, onOpenProject }) {
   const [activeItem, setActiveItem] = useState('Work')
   const [scrolled, setScrolled]     = useState(false)
 
@@ -38,7 +38,7 @@ export default function Nav () {
         <span className={styles.logoText}>CJ LABS</span>
       </div>
 
-      {/* Floating VisionOS Glass Navigation Bar — Thicker, Spacious & Longer */}
+      {/* Floating VisionOS Glass Navigation Bar */}
       <GlassSurface
         borderRadius={999}
         className={styles.glassBarSurface}
@@ -53,7 +53,6 @@ export default function Nav () {
                 onClick={() => handleNavigate(item)}
                 data-cursor
               >
-                {/* Ultra-Smooth Sliding Active Pill */}
                 {isActive && (
                   <motion.div
                     layoutId="navActivePill"
@@ -70,16 +69,28 @@ export default function Nav () {
               </button>
             )
           })}
+
+          {/* Quick Deck CTA in Nav */}
+          {onOpenDeck && (
+            <button
+              className={styles.navItem}
+              onClick={onOpenDeck}
+              data-cursor
+              style={{ color: '#6ee7b7' }}
+            >
+              <span className={styles.navText}>📥 Deck</span>
+            </button>
+          )}
         </nav>
       </GlassSurface>
 
-      {/* Circular VisionOS Glass Action Button */}
+      {/* Glass Action Button — Opens Project Modal */}
       <GlassSurface
         width={56}
         height={56}
         borderRadius={999}
         className={styles.circleBtnSurface}
-        onClick={() => handleNavigate({ label: 'Contact', link: '#contact' })}
+        onClick={onOpenProject || (() => handleNavigate({ label: 'Contact', link: '#contact' }))}
         data-cursor
       >
         <span className={styles.circleIcon}>💬</span>

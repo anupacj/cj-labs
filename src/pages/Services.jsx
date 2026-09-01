@@ -1,36 +1,81 @@
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import { useReveal } from '../hooks/useReveal'
 import styles from './Services.module.css'
 
-const SERVICES = [
-  { icon: '✦', color: 'rgba(110,231,183', name: 'Product Design',    desc: 'End-to-end product design — from research and wireframes to pixel-perfect UI and interactive prototypes.', tags: ['Research','UX/UI','Prototype'] },
-  { icon: '◈', color: 'rgba(167,139,250', name: 'Brand Identity',    desc: 'Visual identities that feel inevitable — logos, colour systems, typography, and motion language.', tags: ['Logo','System','Motion'] },
-  { icon: '⬡', color: 'rgba(96,165,250',  name: 'Web Experiences',  desc: 'Bespoke websites and interactive experiences that push what the browser can do.', tags: ['WebGL','Canvas','Motion'] },
-  { icon: '⬣', color: 'rgba(251,113,133', name: 'Design Systems',   desc: 'Scalable, token-based design systems that bridge design and code at any team size.', tags: ['Tokens','Figma','Storybook'] },
-  { icon: '◎', color: 'rgba(251,191,36',  name: 'Art Direction',    desc: 'Creative direction for campaigns, product launches, and editorial across digital and print.', tags: ['Direction','Editorial','Campaign'] },
-  { icon: '◌', color: 'rgba(255,255,255', name: 'Fluid Glass Lab',  desc: 'Experimental interfaces with real-time WebGL refraction, haptic design, and next-gen UI patterns.', tags: ['WebGL','R3F','Experimental'] },
+const PILLARS = [
+  {
+    num: '(01)',
+    name: 'Branding & Identity',
+    values: ['Consistency', 'Narrative'],
+    deliverables: ['Logo Identity Systems', 'Corporate Identity', 'Brand Story & Guidelines'],
+    color: '#a78bfa'
+  },
+  {
+    num: '(02)',
+    name: 'UX/UI & Product Design',
+    values: ['Hierarchy', 'User Feedback'],
+    deliverables: ['UX Strategy & Research', 'User Interface Design', 'UI Kits & Design Systems', 'Interactive Prototypes'],
+    color: '#6ee7b7'
+  },
+  {
+    num: '(03)',
+    name: 'Web & WebGL Engineering',
+    values: ['Speed', 'Scalability'],
+    deliverables: ['Frontend Development', 'Custom WebGL & Shaders', 'DevOps & Architecture', 'Product Analytics'],
+    color: '#60a5fa'
+  },
+  {
+    num: '(04)',
+    name: '3D & Motion Graphics',
+    values: ['Realism', 'Movement'],
+    deliverables: ['3D Modeling & Rendering', 'Micro-Animations', 'Brand Campaign Motion'],
+    color: '#fb7185'
+  }
 ]
 
 export default function Services () {
+  const headerRef = useRef()
+  useReveal(headerRef)
+
   return (
     <section id="services" style={{ position: 'relative', zIndex: 10 }}>
       <div className={styles.inner}>
-        <div className={`${styles.header} reveal`}>
-          <p className={`${styles.eyebrow} mono`}>What we do</p>
-          <h2 className={styles.title}>Services built<br />for <em>ambition</em></h2>
+        <div ref={headerRef} className={`${styles.header} reveal`}>
+          <p className={`${styles.eyebrow} mono`}>What We Do</p>
+          <h2 className={styles.title}>Full-cycle digital<br /><em>capabilities</em></h2>
+          <p className={styles.subtext}>
+            We build standout digital products and experiences that move our clients’ brands forward.
+          </p>
         </div>
-        <div className={styles.grid}>
-          {SERVICES.map((s, i) => {
-            const r = useRef(); useReveal(r, i * 0.07)
+
+        <div className={styles.pillarList}>
+          {PILLARS.map((p, i) => {
+            const cardRef = useRef()
+            useReveal(cardRef, i * 0.08)
+
             return (
-              <div key={s.name} ref={r} className={`${styles.card} frosted reveal`} data-cursor>
-                <div className={styles.icon} style={{ background: `${s.color},0.12)`, border: `1px solid ${s.color},0.20)` }}>
-                  {s.icon}
+              <div key={p.num} ref={cardRef} className={`${styles.pillarCard} frosted reveal`} data-cursor>
+                <div className={styles.pillarHeader}>
+                  <span className={`${styles.pillarNum} mono`} style={{ color: p.color }}>{p.num}</span>
+                  <div className={styles.titleBlock}>
+                    <h3 className={styles.pillarName}>{p.name}</h3>
+                    <div className={styles.valueRow}>
+                      {p.values.map(val => (
+                        <span key={val} className={`${styles.valueBadge} mono`}>
+                          {val}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <h3 className={styles.name}>{s.name}</h3>
-                <p className={styles.desc}>{s.desc}</p>
-                <div className={styles.tags}>
-                  {s.tags.map(t => <span key={t} className={styles.tag}>{t}</span>)}
+
+                <div className={styles.deliverablesBlock}>
+                  <span className={`${styles.delivLabel} mono`}>DELIVERABLES:</span>
+                  <div className={styles.tagGrid}>
+                    {p.deliverables.map(d => (
+                      <span key={d} className={styles.tag}>{d}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
             )

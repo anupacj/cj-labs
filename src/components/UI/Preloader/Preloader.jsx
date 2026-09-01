@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Strands from '../Strands/Strands'
+import ShinyText from '../ShinyText/ShinyText'
 import styles from './Preloader.module.css'
 
 export default function Preloader ({ minDuration = 1800, onLoaded }) {
@@ -43,17 +44,16 @@ export default function Preloader ({ minDuration = 1800, onLoaded }) {
         />
       </div>
 
-      {/* ── Center Brand & Loading Text ── */}
-      <div className={styles.content}>
-        <div className={styles.brandBadge}>
-          <span className={styles.logoDot} />
-          <span className={styles.logoText}>CJ LABS</span>
-        </div>
-        <p className={`${styles.subtitle} mono`}>FULL-CYCLE DIGITAL STUDIO</p>
-        <div className={styles.progressRow}>
-          <div className={styles.loaderLine} />
-          <span className={`${styles.loadingLabel} mono`}>LOADING EXPERIENCES</span>
-        </div>
+      {/* ── Shiny Text Below Waves ── */}
+      <div className={styles.bottomTextWrap}>
+        <ShinyText
+          text="... preparing the magic ..."
+          speed={2}
+          color="#94a3b8"
+          shineColor="#ffffff"
+          spread={120}
+          className={styles.shinyText}
+        />
       </div>
     </div>
   )

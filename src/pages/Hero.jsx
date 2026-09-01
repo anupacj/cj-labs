@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import GlassSurface from '../components/UI/GlassSurface/GlassSurface'
 import RippleDistortion from '../components/UI/RippleDistortion/RippleDistortion'
+import TextType from '../components/UI/TextType/TextType'
 import { useGlassSettings } from '../context/GlassContext'
 import styles from './Hero.module.css'
 
@@ -47,7 +48,17 @@ export default function Hero ({ onOpenDeck, onOpenProject }) {
       {/* Main Title */}
       <motion.h1 className={styles.title} {...fadeUp(0.22)}>
         <span className={styles.line1}>We create</span>
-        <span className={styles.line2}>extraordinary</span>
+        <span className={styles.line2}>
+          <TextType
+            text={['extraordinary', 'unforgettable', 'high-impact', 'next-gen']}
+            typingSpeed={75}
+            deletingSpeed={40}
+            pauseDuration={1800}
+            showCursor={true}
+            cursorCharacter="|"
+            textColors={['#a78bfa', '#6ee7b7', '#60a5fa', '#fb7185']}
+          />
+        </span>
         <span className={styles.line3}>digital presences.</span>
       </motion.h1>
 

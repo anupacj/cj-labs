@@ -8,6 +8,7 @@ import LiquidGlassFilter  from './components/UI/LiquidGlassFilter'
 import GlassTuner         from './components/UI/GlassTuner/GlassTuner'
 import CapabilitiesModal  from './components/UI/CapabilitiesModal'
 import ProjectModal       from './components/UI/ProjectModal'
+import Preloader          from './components/UI/Preloader/Preloader'
 import Hero       from './pages/Hero'
 import Work       from './pages/Work'
 import About      from './pages/About'
@@ -56,6 +57,9 @@ export default function App () {
 
   return (
     <GlassProvider>
+      {/* ── React Bits Strands WebGL Site Preloader ── */}
+      <Preloader minDuration={1800} />
+
       {/* Black & White Custom Cursor */}
       <Cursor />
 

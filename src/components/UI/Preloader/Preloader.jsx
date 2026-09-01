@@ -27,22 +27,19 @@ export default function Preloader ({ minDuration = 1800, onLoaded }) {
       <div className={styles.canvasWrap}>
         <Strands
           colors={['#a78bfa', '#6ee7b7', '#60a5fa', '#fb7185']}
-          count={4}
-          speed={0.65}
-          amplitude={1.2}
-          waviness={1.1}
-          thickness={0.75}
-          glow={2.8}
-          taper={2.8}
-          spread={1.2}
-          intensity={0.7}
-          saturation={1.6}
-          opacity={0.95}
-          scale={1.4}
-          glass={true}
-          refraction={1.2}
-          dispersion={1.1}
-          glassSize={0.9}
+          count={3}
+          speed={0.5}
+          amplitude={1}
+          waviness={1}
+          thickness={0.7}
+          glow={2.6}
+          taper={3}
+          spread={1}
+          intensity={0.6}
+          saturation={1.5}
+          opacity={1}
+          scale={1.5}
+          glass={false}
         />
       </div>
 

@@ -1,0 +1,70 @@
+.settingsPage {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  background: #090714;
+  color: #fff;
+  padding: 40px 20px 80px 20px;
+  overflow-x: hidden;
+  z-index: 10;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 20;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.backBtn {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #6ee7b7;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.backBtn:hover {
+  background: #6ee7b7;
+  color: #062319;
+  border-color: #6ee7b7;
+}
+
+.titleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tunerContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

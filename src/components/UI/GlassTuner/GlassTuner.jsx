@@ -14,7 +14,7 @@ const PRESET_WALLPAPERS = [
   { name: '🎨 Vibrant Abstract',  url: 'https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=1920&q=80' },
 ]
 
-export default function GlassTuner () {
+export default function GlassTuner ({ embedded = false }) {
   const {
     settings, updateSetting, setSettings,
     rippleSettings, updateRippleSetting, setRippleSettings,
@@ -47,10 +47,10 @@ export default function GlassTuner () {
   }
 
   return (
-    <div className={`${styles.tunerWrap} ${open ? styles.open : styles.closed}`}>
+    <div className={`${styles.tunerWrap} ${embedded ? styles.embeddedWrap : ''} ${open ? styles.open : styles.closed}`}>
       {/* Toggle Header */}
       <button className={styles.toggleBtn} onClick={() => setOpen(!open)} data-cursor>
-        <span>🎛️ Studio Studio Controls</span>
+        <span>🎛️ Studio Controls</span>
         <span className={styles.arrow}>{open ? '▼' : '▲'}</span>
       </button>
 

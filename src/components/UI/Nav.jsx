@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { label: 'Contact',  link: '#contact' },
 ]
 
-export default function Nav ({ onOpenDeck, onOpenProject }) {
+export default function Nav ({ onOpenDeck, onOpenProject, onOpenSettings }) {
   const [activeItem, setActiveItem] = useState('Work')
   const [scrolled, setScrolled]     = useState(false)
 
@@ -32,11 +32,8 @@ export default function Nav ({ onOpenDeck, onOpenProject }) {
 
   return (
     <header className={`${styles.navHeader} ${scrolled ? styles.headerScrolled : ''}`}>
-      {/* Brand Logo */}
-      <div className={styles.logo} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} data-cursor>
-        <span className={styles.logoDot} />
-        <span className={styles.logoText}>CJ LABS</span>
-      </div>
+      {/* Brand Logo (Hidden per request) */}
+      <div className={styles.logo} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} data-cursor />
 
       {/* Floating VisionOS Glass Navigation Bar */}
       <GlassSurface
@@ -79,6 +76,18 @@ export default function Nav ({ onOpenDeck, onOpenProject }) {
               style={{ color: '#6ee7b7' }}
             >
               <span className={styles.navText}>📥 Deck</span>
+            </button>
+          )}
+
+          {/* Settings Link */}
+          {onOpenSettings && (
+            <button
+              className={styles.navItem}
+              onClick={onOpenSettings}
+              data-cursor
+              style={{ color: '#a78bfa' }}
+            >
+              <span className={styles.navText}>⚙️ Settings</span>
             </button>
           )}
         </nav>

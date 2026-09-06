@@ -4,13 +4,13 @@ const GlassContext = createContext()
 
 // User's Ideal Liquid Glass Configuration
 export const DEFAULT_GLASS_SETTINGS = {
-  blur: 2,          // Crystal clear glass
-  displace: 30,     // Deep optical lens refraction
-  brightness: 1.0,  // Pure light transmission
-  saturation: 2.4,  // High color vibrancy through glass
-  redOffset: -3,    // Red dispersion channel
-  greenOffset: 5,   // Green dispersion channel
-  blueOffset: 12,   // Blue dispersion channel
+  blur: 1,          // 1px
+  displace: 43,     // Refraction 43
+  brightness: 0.65, // 0.65x
+  saturation: 3.4,  // 3.40x
+  redOffset: -3,    // -3px
+  greenOffset: 5,   // 5px
+  blueOffset: 12,   // 12px
 }
 
 // React Bits Ripple Distortion Settings

@@ -70,23 +70,23 @@ export default function Hero ({ onOpenDeck, onOpenProject }) {
       {/* Primary Agency CTAs */}
       <motion.div className={styles.actions} {...fadeUp(0.48)}>
         <GlassSurface
-          width="230px"
+          width="210px"
           height="52px"
           borderRadius={999}
           onClick={onOpenDeck}
           data-cursor
         >
-          <span className={styles.btnText}>📥 Get Capabilities Deck</span>
+          <span className={styles.btnText}>Get Capabilities Deck</span>
         </GlassSurface>
 
         <GlassSurface
-          width="190px"
+          width="180px"
           height="52px"
           borderRadius={999}
           onClick={onOpenProject}
           data-cursor
         >
-          <span className={styles.btnText}>💬 Start a Project →</span>
+          <span className={styles.btnText}>Start a Project →</span>
         </GlassSurface>
       </motion.div>
 

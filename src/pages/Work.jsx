@@ -43,7 +43,11 @@ export default function Work () {
         {/* Clean Slate Bare Project Container */}
         <div className={`${styles.clearSlateBox} frosted reveal`}>
           <div className={styles.slateContent}>
-            <span className={styles.slateIcon}>📁</span>
+            <span className={styles.slateIcon} style={{ display: 'flex', justifyContent: 'center' }}>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+              </svg>
+            </span>
             <h3 className={styles.slateTitle}>Selected Agency Case Studies</h3>
             <p className={styles.slateText}>
               Currently showing category: <strong className="mono">[{activeCategory.toUpperCase()}]</strong>.

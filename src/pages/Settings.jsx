@@ -24,7 +24,7 @@ export default function Settings ({ onBack }) {
             ← Back to Website
           </button>
           <div className={styles.titleWrap}>
-            <h1 className={styles.title}>🎛️ Studio Controls & Settings</h1>
+            <h1 className={styles.title}>Studio Controls & Settings</h1>
             <p className={styles.subtitle}>
               Customize live WebGL liquid glass refraction, ripple water physics, and background wallpapers.
             </p>

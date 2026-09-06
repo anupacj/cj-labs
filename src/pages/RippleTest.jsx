@@ -39,7 +39,7 @@ export default function RippleTest () {
           width: 280
         }}
       >
-        <h3 style={{ margin: 0, fontSize: 14, color: '#6ee7b7' }}>🧪 Pure Isolated Ripple Test</h3>
+        <h3 style={{ margin: 0, fontSize: 14, color: '#6ee7b7' }}>Pure Isolated Ripple Test</h3>
         <p style={{ margin: 0, color: '#aaa', fontSize: 11 }}>No CSS filters, no glass, no extra layers.</p>
 
         <div>

@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { label: 'Contact',  link: '#contact' },
 ]
 
-export default function Nav ({ onOpenDeck, onOpenProject, onOpenSettings }) {
+export default function Nav ({ onOpenDeck, onOpenProject }) {
   const [activeItem, setActiveItem] = useState('Work')
   const [scrolled, setScrolled]     = useState(false)
 
@@ -75,19 +75,7 @@ export default function Nav ({ onOpenDeck, onOpenProject, onOpenSettings }) {
               data-cursor
               style={{ color: '#6ee7b7' }}
             >
-              <span className={styles.navText}>📥 Deck</span>
-            </button>
-          )}
-
-          {/* Settings Link */}
-          {onOpenSettings && (
-            <button
-              className={styles.navItem}
-              onClick={onOpenSettings}
-              data-cursor
-              style={{ color: '#a78bfa' }}
-            >
-              <span className={styles.navText}>⚙️ Settings</span>
+              <span className={styles.navText}>Deck</span>
             </button>
           )}
         </nav>
@@ -102,7 +90,11 @@ export default function Nav ({ onOpenDeck, onOpenProject, onOpenSettings }) {
         onClick={onOpenProject || (() => handleNavigate({ label: 'Contact', link: '#contact' }))}
         data-cursor
       >
-        <span className={styles.circleIcon}>💬</span>
+        <span className={styles.circleIcon} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </span>
       </GlassSurface>
     </header>
   )

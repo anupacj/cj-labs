@@ -35,7 +35,12 @@ export default function ProjectModal ({ isOpen, onClose }) {
 
         {submitted ? (
           <div className={styles.successState}>
-            <span className={styles.successIcon}>✨</span>
+            <span className={styles.successIcon} style={{ display: 'flex', justifyContent: 'center' }}>
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6ee7b7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </span>
             <h2>Project Inquiry Received!</h2>
             <p>Thank you for reaching out. We take on 3–4 select projects per quarter and will get back to you within 24 hours.</p>
           </div>

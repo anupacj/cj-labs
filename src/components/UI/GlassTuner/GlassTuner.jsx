@@ -8,10 +8,10 @@ import {
 import styles from './GlassTuner.module.css'
 
 const PRESET_WALLPAPERS = [
-  { name: '🍎 Apple Flowers 4K', url: '/assets/images/wallpaper.jpg' },
-  { name: '🌌 Aurora Borealis',  url: 'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1920&q=80' },
-  { name: '✨ Deep Space Nebula', url: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&q=80' },
-  { name: '🎨 Vibrant Abstract',  url: 'https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=1920&q=80' },
+  { name: 'Apple Flowers 4K', url: '/assets/images/wallpaper.jpg' },
+  { name: 'Aurora Borealis',  url: 'https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1920&q=80' },
+  { name: 'Deep Space Nebula', url: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&q=80' },
+  { name: 'Vibrant Abstract',  url: 'https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=1920&q=80' },
 ]
 
 export default function GlassTuner ({ embedded = false }) {
@@ -50,7 +50,7 @@ export default function GlassTuner ({ embedded = false }) {
     <div className={`${styles.tunerWrap} ${embedded ? styles.embeddedWrap : ''} ${open ? styles.open : styles.closed}`}>
       {/* Toggle Header */}
       <button className={styles.toggleBtn} onClick={() => setOpen(!open)} data-cursor>
-        <span>🎛️ Studio Controls</span>
+        <span>Studio Controls</span>
         <span className={styles.arrow}>{open ? '▼' : '▲'}</span>
       </button>
 
@@ -59,13 +59,13 @@ export default function GlassTuner ({ embedded = false }) {
           {/* Tab Navigation */}
           <div className={styles.tabBar}>
             <button className={`${styles.tabBtn} ${tab === 'glass' ? styles.tabActive : ''}`} onClick={() => setTab('glass')}>
-              💎 Glass
+              Glass
             </button>
             <button className={`${styles.tabBtn} ${tab === 'ripple' ? styles.tabActive : ''}`} onClick={() => setTab('ripple')}>
-              🌊 Ripple
+              Ripple
             </button>
             <button className={`${styles.tabBtn} ${tab === 'wallpaper' ? styles.tabActive : ''}`} onClick={() => setTab('wallpaper')}>
-              🖼️ Wallpaper
+              Wallpaper
             </button>
           </div>
 
@@ -207,7 +207,7 @@ export default function GlassTuner ({ embedded = false }) {
 
               <div className={styles.uploadBlock}>
                 <label className={styles.uploadLabel}>
-                  <span>📁 Upload Custom Local Image</span>
+                  <span>Upload Custom Local Image</span>
                   <input type="file" accept="image/*" onChange={handleFileUpload} style={{ display: 'none' }} />
                 </label>
 
@@ -228,10 +228,10 @@ export default function GlassTuner ({ embedded = false }) {
           {/* Footer Actions */}
           <div className={styles.actions}>
             <button className={styles.copyBtn} onClick={copyConfig} data-cursor>
-              {copied ? '✓ Copied All Config!' : '📋 Copy All Settings'}
+              {copied ? 'Copied All Config' : 'Copy All Settings'}
             </button>
             <button className={styles.resetBtn} onClick={resetConfig} data-cursor>
-              🔄 Reset Defaults
+              Reset Defaults
             </button>
           </div>
         </div>

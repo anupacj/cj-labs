@@ -5,18 +5,18 @@ import styles from './Nav.module.css'
 
 const NAV_ITEMS = [
   { label: 'Work',     link: '#work' },
-  { label: 'About',    link: '#about' },
   { label: 'Services', link: '#services' },
   { label: 'Lab',      link: '#lab' },
+  { label: 'About',    link: '#about' },
   { label: 'Contact',  link: '#contact' },
 ]
 
-export default function Nav ({ onOpenDeck, onOpenProject }) {
+export default function Nav ({ onOpenProject }) {
   const [activeItem, setActiveItem] = useState('Work')
   const [scrolled, setScrolled]     = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    const onScroll = () => setScrolled(window.scrollY > 50)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -32,13 +32,15 @@ export default function Nav ({ onOpenDeck, onOpenProject }) {
 
   return (
     <header className={`${styles.navHeader} ${scrolled ? styles.headerScrolled : ''}`}>
-      {/* Brand Logo (Hidden per request) */}
-      <div className={styles.logo} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} data-cursor />
+      {/* Studio Brand Identifier */}
+      <div className={styles.logo} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} data-cursor>
+        <span className={`${styles.logoText} mono`}>CJ LABS</span>
+      </div>
 
       {/* Floating VisionOS Glass Navigation Bar */}
       <GlassSurface
         borderRadius={999}
-        className={styles.glassBarSurface}
+        className={`${styles.glassBarSurface} ${scrolled ? styles.glassBarScrolled : ''}`}
       >
         <nav className={styles.navItemsRow}>
           {NAV_ITEMS.map((item) => {
@@ -52,7 +54,7 @@ export default function Nav ({ onOpenDeck, onOpenProject }) {
               >
                 {isActive && (
                   <motion.div
-                    layoutId="navActivePill"
+                    layoutId="navActiveIndicator"
                     className={styles.activePillBackground}
                     transition={{
                       type: 'spring',
@@ -66,36 +68,18 @@ export default function Nav ({ onOpenDeck, onOpenProject }) {
               </button>
             )
           })}
-
-          {/* Quick Deck CTA in Nav */}
-          {onOpenDeck && (
-            <button
-              className={styles.navItem}
-              onClick={onOpenDeck}
-              data-cursor
-              style={{ color: '#6ee7b7' }}
-            >
-              <span className={styles.navText}>Deck</span>
-            </button>
-          )}
         </nav>
       </GlassSurface>
 
-      {/* Glass Action Button — Opens Project Modal */}
-      <GlassSurface
-        width={56}
-        height={56}
-        borderRadius={999}
-        className={styles.circleBtnSurface}
+      {/* Distinct CTA Button: Start a Project */}
+      <button
+        className={styles.startProjectCta}
         onClick={onOpenProject || (() => handleNavigate({ label: 'Contact', link: '#contact' }))}
         data-cursor
       >
-        <span className={styles.circleIcon} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-        </span>
-      </GlassSurface>
+        <span>Start a Project</span>
+        <span className={styles.ctaArrow}>→</span>
+      </button>
     </header>
   )
 }

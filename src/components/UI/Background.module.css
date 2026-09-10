@@ -3,37 +3,19 @@
   inset: 0;
   z-index: 0;
   overflow: hidden;
+  background: var(--bg-base);
 }
 
-/* The photo wallpaper — glass refracts this */
-.wallpaper {
+.baseCanvas {
   position: absolute;
   inset: 0;
-  background-image: url('/assets/images/wallpaper.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  animation: slowZoom 35s ease-in-out infinite alternate;
-  will-change: transform;
-}
-@keyframes slowZoom {
-  0%   { transform: scale(1.00); }
-  100% { transform: scale(1.06); }
+  background: radial-gradient(circle at 50% 20%, rgba(111, 143, 163, 0.08) 0%, rgba(10, 10, 12, 0.98) 70%);
 }
 
-/* Enhanced Contrast Vignette Overlay — provides rich background depth */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 85% 75% at 50% 35%, rgba(6, 7, 10, 0.55) 0%, rgba(6, 7, 10, 0.82) 65%, rgba(6, 7, 10, 0.94) 100%),
-    linear-gradient(to bottom, rgba(6, 7, 10, 0.60), rgba(6, 7, 10, 0.88));
-}
-
-.blob1, .blob2, .blob3, .blob4 {
+.blob1, .blob2, .blob3 {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
+  filter: blur(120px);
   opacity: 0;
   transition: opacity 1.6s ease;
   pointer-events: none;
@@ -41,42 +23,54 @@
 }
 
 .blob1 {
-  width: 640px; height: 640px;
-  top: -8%; left: -6%;
-  background: radial-gradient(circle, rgba(110,231,183,0.25) 0%, transparent 68%);
-  animation: floatA 20s ease-in-out infinite;
-}
-.blob2 {
-  width: 520px; height: 520px;
-  top: 28%; right: -8%;
-  background: radial-gradient(circle, rgba(167,139,250,0.22) 0%, transparent 68%);
-  animation: floatB 24s ease-in-out infinite;
-}
-.blob3 {
-  width: 420px; height: 420px;
-  bottom: 8%; left: 18%;
-  background: radial-gradient(circle, rgba(251,113,133,0.18) 0%, transparent 68%);
-  animation: floatC 16s ease-in-out infinite;
-}
-.blob4 {
-  width: 360px; height: 360px;
-  top: 55%; left: 48%;
-  background: radial-gradient(circle, rgba(96,165,250,0.16) 0%, transparent 68%);
-  animation: floatD 21s ease-in-out infinite;
+  width: 600px;
+  height: 600px;
+  top: -10%;
+  right: -5%;
+  background: radial-gradient(circle, rgba(111, 143, 163, 0.12) 0%, transparent 70%);
+  animation: floatA 24s ease-in-out infinite;
 }
 
-@keyframes floatA { 0%,100%{transform:translate3d(0,0,0) scale(1);} 33%{transform:translate3d(42px,-32px,0) scale(1.06);} 66%{transform:translate3d(-22px,22px,0) scale(0.94);} }
-@keyframes floatB { 0%,100%{transform:translate3d(0,0,0) scale(1);} 40%{transform:translate3d(-36px,28px,0) scale(1.08);} 70%{transform:translate3d(22px,-18px,0) scale(0.96);} }
-@keyframes floatC { 0%,100%{transform:translate3d(0,0,0) scale(1);} 50%{transform:translate3d(32px,-42px,0) scale(1.05);} }
-@keyframes floatD { 0%,100%{transform:translate3d(0,0,0) scale(1);} 45%{transform:translate3d(-28px,36px,0) scale(1.07);} }
+.blob2 {
+  width: 500px;
+  height: 500px;
+  bottom: 10%;
+  left: -5%;
+  background: radial-gradient(circle, rgba(111, 143, 163, 0.08) 0%, transparent 70%);
+  animation: floatB 28s ease-in-out infinite;
+}
+
+.blob3 {
+  width: 400px;
+  height: 400px;
+  top: 40%;
+  left: 35%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  animation: floatC 20s ease-in-out infinite;
+}
+
+@keyframes floatA {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-30px, 30px, 0); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(30px, -20px, 0); }
+}
+
+@keyframes floatC {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-20px, 20px, 0); }
+}
 
 .grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 82% 82% at 50% 50%, black 25%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 82% 82% at 50% 50%, black 25%, transparent 100%);
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
 }

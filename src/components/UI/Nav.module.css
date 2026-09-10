@@ -1,7 +1,3 @@
-/* ═════════════════════════════════════════════════════════
-   Apple VisionOS Glass Navigation Styles
-═════════════════════════════════════════════════════════ */
-
 .navHeader {
   position: fixed;
   top: 24px; left: 0; right: 0;
@@ -10,106 +6,122 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 48px;
-  transition: transform 0.35s var(--ease-spring);
+  transition: all 0.35s var(--ease-expo);
+}
+
+.headerScrolled {
+  top: 16px;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   cursor: pointer;
   user-select: none;
 }
-.logoDot {
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: #6ee7b7;
-  box-shadow: 0 0 16px #6ee7b7, 0 0 28px #6ee7b7;
-}
+
 .logoText {
-  font-family: 'Google Sans', 'Google Sans Text', system-ui, -apple-system, sans-serif !important;
-  font-weight: 800;
-  font-size: 17px;
-  letter-spacing: 0.1em;
-  color: #ffffff;
-  text-shadow: 0 2px 14px rgba(0,0,0,0.8);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--text-secondary);
+  transition: color 0.25s ease;
+}
+
+.logo:hover .logoText {
+  color: var(--text-primary);
 }
 
 .glassBarSurface {
-  padding: 6px 10px;
+  padding: 4px 6px;
+  transition: all 0.3s ease;
+}
+
+.glassBarScrolled {
+  padding: 2px 4px;
 }
 
 .navItemsRow {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   z-index: 2;
-  padding: 4px 6px;
 }
 
-/* Spacious, Thicker, Longer Nav Item Capsules */
 .navItem {
   position: relative;
   appearance: none;
   background: transparent;
   border: none;
-  font-family: 'Google Sans', 'Google Sans Text', system-ui, -apple-system, sans-serif !important;
-  font-size: 15px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-  padding: 12px 28px;
-  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+  transition: color 0.25s ease;
 }
 
 .navItem:hover {
-  color: #ffffff;
-  transform: translateY(-1px) scale(1.04);
+  color: var(--text-primary);
 }
 
 .navItemActive {
-  color: #ffffff !important;
-  font-weight: 700;
+  color: var(--bg-base) !important;
+  font-weight: 600;
 }
 
-/* Ultra-Smooth Sliding Active Glass Pill Background */
 .activePillBackground {
   position: absolute;
   inset: 0;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 1);
+  border-radius: var(--radius-pill);
+  background: var(--text-primary);
   z-index: 1;
 }
 
 .navItemActive .navText {
-  color: #06070a !important;
-  font-weight: 800;
-  text-shadow: none !important;
+  color: var(--bg-base) !important;
 }
 
 .navText {
   position: relative;
   z-index: 2;
-  font-family: 'Google Sans', 'Google Sans Text', system-ui, -apple-system, sans-serif !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
-  transition: color 0.25s ease;
 }
 
-.circleBtnSurface {
+.startProjectCta {
+  background: rgba(19, 19, 22, 0.85);
+  border: 1px solid var(--accent);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.circleBtnSurface:hover {
-  transform: scale(1.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
 }
 
-.circleIcon {
-  font-size: 20px;
+.startProjectCta:hover {
+  background: var(--accent);
+  color: var(--bg-base);
+}
+
+.ctaArrow {
+  transition: transform 0.2s ease;
+}
+
+.startProjectCta:hover .ctaArrow {
+  transform: translateX(3px);
+}
+
+@media (max-width: 768px) {
+  .navHeader {
+    padding: 0 16px;
+  }
+  .startProjectCta {
+    display: none;
+  }
 }

@@ -10,8 +10,9 @@ import ProjectModal       from './components/UI/ProjectModal'
 import Preloader          from './components/UI/Preloader/Preloader'
 import Hero       from './pages/Hero'
 import Work       from './pages/Work'
-import About      from './pages/About'
 import Services   from './pages/Services'
+import Process    from './pages/Process'
+import About      from './pages/About'
 import Lab        from './pages/Lab'
 import Contact    from './pages/Contact'
 import Settings   from './pages/Settings'
@@ -85,12 +86,14 @@ export default function App () {
         />
         <Sep />
         <Suspense fallback={null}>
-          <Work />
+          <Work onOpenProject={() => setProjectModalOpen(true)} />
         </Suspense>
         <Sep />
-        <About />
-        <Sep />
         <Services />
+        <Sep />
+        <Process />
+        <Sep />
+        <About />
         <Sep />
         <Lab />
         <Sep />

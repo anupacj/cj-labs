@@ -1,12 +1,8 @@
 import styles from './Background.module.css'
 import { useEffect, useRef } from 'react'
-import { useGlassSettings } from '../../context/GlassContext'
 
 export default function Background () {
   const containerRef = useRef()
-  const { wallpaperUrl } = useGlassSettings() || {}
-
-  const currentBg = wallpaperUrl || '/assets/images/wallpaper.jpg'
 
   useEffect(() => {
     const blobs = Array.from(containerRef.current?.querySelectorAll('[data-blob]') || [])
@@ -25,7 +21,7 @@ export default function Background () {
       if (!ticking) {
         requestAnimationFrame(() => {
           blobs.forEach((b, i) => {
-            const d = 12 + i * 6
+            const d = 10 + i * 5
             b.style.transform = `translate3d(${mouseX * d}px, ${mouseY * d}px, 0)`
           })
           ticking = false
@@ -40,18 +36,15 @@ export default function Background () {
 
   return (
     <div className={styles.bg} ref={containerRef} aria-hidden="true">
-      {/* 4K Apple Flowers wallpaper — glass refracts this */}
-      <div
-        className={styles.wallpaper}
-        style={{ backgroundImage: `url("${currentBg}")` }}
-      />
-      {/* Dark contrast vignette overlay */}
-      <div className={styles.overlay} />
-      {/* Interactive color blobs */}
+      {/* Calm VisionOS Low-Detail Ambient Background */}
+      <div className={styles.baseCanvas} />
+
+      {/* Quiet Ambient Refraction Light Nodes */}
       <div data-blob className={styles.blob1} />
       <div data-blob className={styles.blob2} />
       <div data-blob className={styles.blob3} />
-      <div data-blob className={styles.blob4} />
+
+      {/* Subtle Micro Mesh */}
       <div className={styles.grid} />
     </div>
   )

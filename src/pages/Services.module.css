@@ -1,76 +1,152 @@
-.inner { max-width: 1100px; margin: 0 auto; padding: 120px 32px; }
-.header { margin-bottom: 56px; }
-.eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--violet); margin-bottom: 16px; }
-.title { font-size: clamp(34px,5vw,60px); font-weight: 900; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 16px; }
-.title em { font-style: italic; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,0.22); }
-.subtext { font-size: 16px; color: var(--muted); max-width: 540px; line-height: 1.6; }
+.section {
+  padding: var(--space-2xl, 120px) 0;
+  position: relative;
+}
 
-.pillarList { display: flex; flex-direction: column; gap: 20px; }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
 
-.pillarCard {
-  border-radius: 20px;
-  padding: 32px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.stickyLayout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 64px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .stickyLayout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* Left Column (Sticky) */
+.stickyCol {
+  position: sticky;
+  top: 120px;
+  align-self: flex-start;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.stickyTitle {
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.stickyTitle em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.stickySub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 440px;
+}
+
+/* Right Column (Scrolling Cards) */
+.scrollCol {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.pillarHeader {
+.serviceCard {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg, 20px);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.serviceCard:hover {
+  border-color: rgba(111, 143, 163, 0.3);
+}
+
+.cardHeader {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 16px;
 }
 
-.pillarNum {
-  font-size: 22px;
-  font-weight: 700;
+.cardNum {
+  font-size: 14px;
+  color: var(--accent);
   letter-spacing: 0.05em;
-  line-height: 1;
+  padding-top: 4px;
 }
 
-.titleBlock {
+.cardTitleWrap {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.pillarName {
+.cardName {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
   margin: 0;
-  color: #fff;
 }
 
 .valueRow {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.valueBadge {
-  font-size: 11px;
-  color: #94a3b8;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 4px 10px;
-  border-radius: 999px;
+.valueTag {
+  font-size: 10px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3px 10px;
+  border-radius: var(--radius-full, 999px);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.cardDesc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
 .deliverablesBlock {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   padding-top: 20px;
 }
 
 .delivLabel {
-  font-size: 11px;
-  color: #64748b;
-  letter-spacing: 0.12em;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .tagGrid {
@@ -80,10 +156,10 @@
 }
 
 .tag {
-  font-size: 13px;
-  color: #e2e8f0;
-  padding: 8px 14px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm, 6px);
 }

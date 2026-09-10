@@ -77,17 +77,12 @@
   font-weight: 600;
 }
 
-/* Asymmetric Project Grid */
+/* Asymmetric Editorial Grid */
 .projectGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-@media (max-width: 800px) {
-  .projectGrid {
-    grid-template-columns: 1fr;
-  }
+  gap: 32px;
+  align-items: start;
 }
 
 .projectCard {
@@ -107,6 +102,32 @@
 .projectCard:hover {
   border-color: rgba(111, 143, 163, 0.35);
   transform: translateY(-2px);
+}
+
+/* Hero / Full-Bleed 2-Column Span */
+.hero {
+  grid-column: 1 / -1;
+  padding: 48px;
+  min-height: 380px;
+}
+
+.hero .projectTitle {
+  font-size: clamp(28px, 3.5vw, 42px);
+}
+
+.hero .projectDesc {
+  max-width: 680px;
+  font-size: 16px;
+}
+
+/* Vertical Stagger for 2nd column */
+.colLeft {
+  grid-column: 1 / 2;
+}
+
+.colRightStagger {
+  grid-column: 2 / 3;
+  margin-top: 48px; /* Vertical offset stagger */
 }
 
 .cardHeader {
@@ -184,4 +205,18 @@
 .projectCard:hover .arrowIcon {
   transform: translateX(4px);
   color: var(--accent);
+}
+
+@media (max-width: 800px) {
+  .projectGrid {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    grid-column: 1 / -1;
+    padding: 32px;
+  }
+  .colLeft, .colRightStagger {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
 }

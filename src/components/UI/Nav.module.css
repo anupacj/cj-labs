@@ -7,10 +7,19 @@
   justify-content: space-between;
   padding: 0 48px;
   transition: all 0.35s var(--ease-expo);
+  pointer-events: none; /* Container is transparent to clicks except children */
+}
+
+.navHeader > * {
+  pointer-events: auto; /* Enable clicks on logo, glass bar, and CTA button */
 }
 
 .headerScrolled {
-  top: 16px;
+  top: 0;
+  padding: 16px 48px;
+  background: linear-gradient(180deg, rgba(10, 10, 12, 0.95) 0%, rgba(10, 10, 12, 0.75) 70%, transparent 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .logo {
@@ -90,7 +99,7 @@
 }
 
 .startProjectCta {
-  background: rgba(19, 19, 22, 0.85);
+  background: var(--surface, #131316);
   border: 1px solid var(--accent);
   color: var(--text-primary);
   font-size: 13px;
@@ -120,6 +129,9 @@
 @media (max-width: 768px) {
   .navHeader {
     padding: 0 16px;
+  }
+  .headerScrolled {
+    padding: 12px 16px;
   }
   .startProjectCta {
     display: none;

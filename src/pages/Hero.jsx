@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import TextType from '../components/UI/TextType/TextType'
+import WordCrossfade from '../components/UI/WordCrossfade/WordCrossfade'
 import styles from './Hero.module.css'
 
 const fadeUp = (delay = 0) => ({
@@ -23,18 +23,13 @@ export default function Hero ({ onOpenProject }) {
           </span>
         </motion.div>
 
-        {/* Clean Headline Zone — No lens collision */}
+        {/* Clean Headline Zone */}
         <motion.h1 className={styles.title} {...fadeUp(0.20)}>
           <span className={styles.line1}>We build</span>
           <span className={styles.line2}>
-            <TextType
-              text={['fluid', 'resilient', 'focused']}
-              typingSpeed={75}
-              deletingSpeed={40}
-              pauseDuration={1800}
-              showCursor={true}
-              cursorCharacter="|"
-              textColors={['#f2f0eb']}
+            <WordCrossfade
+              words={['fluid', 'resilient', 'focused']}
+              interval={2800}
             />
           </span>
           <span className={styles.line3}>digital presences.</span>

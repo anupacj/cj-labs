@@ -1,5 +1,5 @@
 /* ═════════════════════════════════════════════════════════
-   React Bits GlassSurface Component Styles
+   VisionOS Dark Glass Surface Component Styles
 ═════════════════════════════════════════════════════════ */
 
 .glass-surface {
@@ -9,7 +9,7 @@
   justify-content: center;
   overflow: hidden;
   user-select: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-surface__svg-defs {
@@ -24,12 +24,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.35) 0%,
-    rgba(255, 255, 255, 0.12) 45%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
+  background: rgba(19, 19, 22, 0.92);
   pointer-events: none;
   z-index: 1;
 }
@@ -38,15 +33,10 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow:
-    inset 0 1.8px 0.5px rgba(255, 255, 255, 0.95),
-    inset 0 -1.2px 0.5px rgba(255, 255, 255, 0.45),
-    inset 0 0 16px rgba(255, 255, 255, 0.20),
-    0 12px 32px rgba(0, 0, 0, 0.38),
-    0 0 20px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   pointer-events: none;
   z-index: 2;
+  transition: border-color 0.25s ease;
 }
 
 .glass-surface__content {
@@ -59,13 +49,6 @@
   justify-content: center;
 }
 
-.glass-surface:hover {
-  transform: translateY(-2px) scale(1.03);
-}
 .glass-surface:hover .glass-surface__rim {
-  box-shadow:
-    inset 0 2px 0.8px rgba(255, 255, 255, 1.0),
-    inset 0 -1.5px 0.8px rgba(255, 255, 255, 0.6),
-    0 18px 48px rgba(0, 0, 0, 0.45),
-    0 0 28px rgba(255, 255, 255, 0.30);
+  border-color: rgba(111, 143, 163, 0.4);
 }

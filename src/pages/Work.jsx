@@ -16,11 +16,11 @@ const PROJECTS = [
     title: 'Kronos Shader Engine',
     category: 'webgl',
     catLabel: 'Web & WebGL',
-    tag: 'Studio Project',
+    tag: 'Featured Studio Project',
     year: '2024',
     metric: '+320% Shader FPS',
-    desc: 'Real-time 3D shader pipeline & spatial canvas built for GPU-accelerated graphics rendering.',
-    aspect: 'wide'
+    desc: 'Real-time 3D shader pipeline & spatial canvas built for GPU-accelerated graphics rendering across web applications.',
+    layout: 'hero'
   },
   {
     id: 'aura',
@@ -31,7 +31,7 @@ const PROJECTS = [
     year: '2024',
     metric: 'Design Token System',
     desc: 'Complete visual identity redesign and multi-platform design token architecture.',
-    aspect: 'tall'
+    layout: 'colLeft'
   },
   {
     id: 'nebula',
@@ -42,7 +42,7 @@ const PROJECTS = [
     year: '2024',
     metric: '<16ms Render Latency',
     desc: 'High-density telemetry interface featuring customizable node graphs and glass UI widgets.',
-    aspect: 'tall'
+    layout: 'colRightStagger'
   },
   {
     id: 'vortex',
@@ -53,7 +53,7 @@ const PROJECTS = [
     year: '2024',
     metric: '4K Spatial Render',
     desc: 'Photorealistic 3D product motion systems and interactive asset pipeline for physical hardware.',
-    aspect: 'wide'
+    layout: 'hero'
   }
 ]
 
@@ -91,17 +91,19 @@ export default function Work ({ onOpenProject }) {
           </div>
         </div>
 
-        {/* Asymmetric Project Grid */}
+        {/* Asymmetric Editorial Project Grid */}
         <div className={styles.projectGrid}>
           {filteredProjects.map((project, i) => {
             const cardRef = useRef()
             useReveal(cardRef, i * 0.08)
 
+            const layoutClass = activeCategory === 'all' ? styles[project.layout] : ''
+
             return (
               <div
                 key={project.id}
                 ref={cardRef}
-                className={`${styles.projectCard} ${styles[project.aspect]} reveal`}
+                className={`${styles.projectCard} ${layoutClass} reveal`}
                 onClick={() => onOpenProject && onOpenProject(project)}
                 data-cursor
               >
